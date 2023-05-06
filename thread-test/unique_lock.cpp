@@ -12,7 +12,7 @@ struct Num{
 
 void transfer(Num &from, Num &to, int num)
 {
-    unique_lock<mutex> l1(from.m,defer_lock);
+    unique_lock<mutex> l1(from.m,defer_lock);// 推迟上锁，手动上锁
     unique_lock<mutex> l2(to.m,defer_lock);
     lock(l1,l2);
     from.n -= num;
